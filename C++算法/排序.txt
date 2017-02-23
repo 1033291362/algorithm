@@ -1,0 +1,70 @@
+//选择排序
+template<typename T>//这个可以让T函数是浮点或者是其他东西甚至字符串 叫做泛函数
+for(int i=0;i<n;i++){//排序算法从小到大首先他只能接受整数数组
+    int ninInder=i;
+    for(int j=i+1;j++){
+        if(arr[j]<arr[minIndex])
+        minIndex=j;
+        swap(arr[i],arr[minIndex])
+    }
+}//使用模板函数C++
+//自定义函数排序
+struct student{
+    string name;
+    int score;
+    bool operator<(cosnt student & otherstudent{
+        return score<otherstudent.score);
+    }
+    frient ostrem&operator<<(ostream &os,const student &student){
+        os<<student<<student.name<<""<<student/score<<endl;
+        return os;
+    }
+}
+
+//随机生成算法测试用例
+sorttexthelper
+int* generateradomarray(int n,int rangel,int ranger){
+    assert(rangel<=ranger);
+    int *arr=new int[n];
+    srand(time(NULL));
+    for(int i=0;i<n;i++)
+    arr[i];=rand()%( range-rangel+1)+rangel;//rangel-ranger
+    return arr;
+    
+}
+//算法性能测试
+template<typename T)
+void textsort(string sortname,void(*sort)(T[],int,int n){
+    clock_t starttime_clock();
+    sort(arr,n);
+    clock_t endtime=clock();
+}
+//插入排序
+voir insertionsort(t arr[], int n){
+    for(int i=1;i<n;i++){
+        //从1开始
+        for(int j=i;j>0;j--){
+            if(arr[j]<arr[j-1]){
+                swap(arr[j],arr[j-1]);
+            }
+            else{
+                break;
+            }
+        // for(int j=1;j>0&&arr[j]<arr[j-1];j--)
+        // swap(arr[j],arr[j-1])
+        }
+    }
+}
+//插入排序改进
+voir insertionsort(t arr[], int n){
+    for(int i=1;i<n;i++){
+        T e=arr[i];
+        int j;
+         for(int j=i;j>0&&arr[j-1]>e;j--){
+             arr[j]-arr[j-1];
+         }
+         arr[j]=e;
+        }
+    }
+}
+//冒泡排序

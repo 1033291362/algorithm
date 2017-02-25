@@ -1,0 +1,115 @@
+o（nlogn级别算法）
+//1.归并排序法
+void mergesort(t arr[],int n){
+    __mergesort(arr,0,n-1);
+}
+void _mergesort(t ar[],int l,int r){
+    if(l>=r)//当前数据集已经空了
+    return;
+    
+    int mid=(l+r)/2;
+    __mergesort(arr,l,mid);
+    __mergesort(arr,mid+1,r);
+    __merge(arr,l,mid,r);
+}
+void _merge(t arr[],int l,int mid ,int r){
+    t aux[r-l+1];
+    for(int i=l;i<=r;i++)
+    aux[i-l]=arr[i];
+    int i=l,j=mid+1;for(int k=l;k<=r;k++){
+        if(i>min){
+            arr[k]=aux[j-l];
+            j++;
+        }else if(j>r){
+            arr[k]=aux[i-l];
+        }
+        else if(aux[i-l]<aux[j-l]){
+            arr[k]=aux[i-l];
+            i++
+        }
+        else{
+            arr[k]=aux[j-l];
+            j++;
+        }
+    }
+}
+//java版本 c++的我有点看不懂
+package org.conan.myhadoop.mr;  
+  
+import java.util.Arrays;  
+  
+    public class MergeSort {    
+        
+        public static int[] sort(int[] array, int low, int high,int[] temp) {    
+              
+            int mid = (low + high) / 2;    
+            if (low < high) {    
+                // 左边    
+                sort(array, low, mid,temp);    
+                // 右边    
+                sort(array, mid + 1, high,temp);    
+                // 左右归并    
+                merge(array, low, mid, high,temp);    
+            }    
+            return array;    
+        }    
+        
+        public static void merge(int[] array, int first, int mid, int last,int[] temp) {    
+          
+            int i = first, j = mid + 1;    
+            int m = mid,   n = last;    
+            int k = 0;    
+            // 把较小的数先移到新数组中    
+            while (i <= m && j <= n)    
+            {    
+                if (array[i] <= array[j])    
+                    temp[k++] = array[i++];    
+                else    
+                    temp[k++] = array[j++];    
+            }    
+            // 把左边剩余的数移入数组     
+            while (i <= m)    
+                temp[k++] = array[i++];    
+            // 把右边边剩余的数移入数组      
+            while (j <= n)    
+                temp[k++] = array[j++];    
+             // 把临时数组中的数覆盖array数组        
+            for (i = 0; i < k; i++)    
+                array[first + i] = temp[i];    
+        }    
+        
+            
+        // 归并排序的实现    
+        public static void main(String[] args) {    
+        
+            int[] array = { 2, 7, 8, 3, 1, 6, 9, 0, 5, 4 };    
+            int[] temp=new int[array.length];  
+            MergeSort.sort(array, 0, array.length-1,temp);    
+            System.out.println(Arrays.toString(array));    
+        }    
+    }  
+    //2.快排
+     void quicksort(t arr[],int n){
+         __quicksort(arr,0,n-1);
+     }
+     void __quicksort(t arr[],int l,int r){
+         if(l>=r)
+         return;
+         int p=__partition(arr,l,r);
+         __quicksort(arr,l,p-1);
+         __quicksort(arr,p+1,r);
+         
+     }
+     int __partition(t arr[],int l,int r){
+         t v=arr[l];
+         int j=l;
+         for(int i=l+1;i<=r;i++){
+             if(arr[i]<v){
+                 swap(arr[j+1],arr[i]);
+                 j++;
+                 //swap(arr[++j],arr[i])
+             }
+         }
+         swap(arr[l].arr[j]);
+         return j;
+     }
